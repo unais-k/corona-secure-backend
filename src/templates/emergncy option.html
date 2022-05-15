@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+   {% extends "DesignPage.html" %}
+  {% block body %}
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="add_emergencyoption">
+  <table width="412" height="198" border="1" align="center">
+    <tr>
+      <td width="207">Emergency option</td>
+      <td width="189"><input type="text" name="emergency" id="textfield" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="sumt" id="sumt" value="Submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

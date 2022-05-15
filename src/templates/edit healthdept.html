@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+   {% extends "DesignPage.html" %}
+  {% block body %}
+
+</head>
+<script type="text/javascript">
+function valid()
+{
+if(document.getElementById("name").value=="")
+	{
+		alert("Enter Health Dept Name!");
+		document.getElementById("name").focus();
+    	return false;
+ 	}
+	if(/[^a-z\s]/gi.test(document.getElementById("name").value))
+	{
+		alert("Special characters are not allowed in name");
+		document.getElementById("name").focus();
+		return false;
+	}
+	if(document.getElementById("adr").value=="")
+	{
+		alert("Enter Address!");
+		document.getElementById("adr").focus();
+    	return false;
+ 	}
+
+	if(document.getElementById("mn").value=="")
+   	{
+     	alert("Enter Phone Number!");
+     	document.getElementById("mn").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("mn").value))
+	{
+		alert("Special characters not allowed in Phone Number");
+		document.getElementById("mn").focus();
+		return false;
+	}
+	if((document.getElementById("mn").value).length>10)
+
+	{
+		alert("Phone number is not valid");
+		document.getElementById("mn").focus();
+		return false;
+	}
+
+	if(document.getElementById("email").value=="")
+	{
+		alert("Enter your E-mail ID");
+		document.getElementById("email").focus();
+		return false;
+	}
+	var emailPat =/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+	var emailid=document.getElementById("email").value;
+	var matchArray = emailid.match(emailPat);
+	if (matchArray == null)
+	{
+		alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+		document.getElementById("email").focus();
+		return false;
+	}
+	if(document.getElementById("pwd").value=="")
+	{
+		alert("Enter Password!");
+		document.getElementById("pwd").focus();
+    	return false;
+ 	}
+}
+</script>
+
+<body>
+<form id="form1" name="form1" method="post" action="/health_edit">
+  <label for="textfield2"></label>
+  <table width="594" height="342" border="0" align="center">
+    <tr>
+      <td width="408">Health department name</td>
+      <td width="533">
+      <input type="text" name="name" id="name" value="{{data['health_name']}}"/></td>
+    </tr>
+      <input type="hidden" name="id" id="id" value="{{data['health_department_id']}}">
+    <tr>
+      <td>Address</td>
+      <td>
+      <textarea name="address" id="adr" cols="45" rows="5">{{data['address']}}</textarea></td>
+    </tr>
+    <tr>
+      <td>License no</td>
+      <td>
+      <input type="text" name="license" id="textfield2" value="{{data['license']}}" /></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>
+      <input type="text" name="email" id="email" value="{{data['email']}}" /></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>
+      <input type="text" name="phone" id="mn"  value="{{data['phone']}}" /></td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="submit" id="submit" value="Submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+  {% extends "DesignPage.html" %}
+  {% block body %}
+
+</head>
+
+<script type="text/javascript">
+function valid()
+{
+if(document.getElementById("name").value=="")
+	{
+		alert("Enter Name!");
+		document.getElementById("name").focus();
+    	return false;
+ 	}
+	if(/[^a-z\s]/gi.test(document.getElementById("name").value))
+	{
+		alert("Special characters are not allowed in name");
+		document.getElementById("name").focus();
+		return false;
+	}
+	if(document.getElementById("adr").value=="")
+	{
+		alert("Enter Address!");
+		document.getElementById("adr").focus();
+    	return false;
+ 	}
+ 	if(document.getElementById("pin").value=="")
+   	{
+     	alert("Enter pin code!");
+     	document.getElementById("pin").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("pin").value))
+	{
+		alert("Special characters not allowed in pin code");
+		document.getElementById("pin").focus();
+		return false;
+	}
+	if((document.getElementById("pin").value).length!=6)
+
+	{
+		alert("pin code is not valid");
+		document.getElementById("pin").focus();
+		return false;
+	}
+	if(document.getElementById("mn").value=="")
+   	{
+     	alert("Enter Phone Number!");
+     	document.getElementById("mn").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("mn").value))
+	{
+		alert("Special characters not allowed in Phone Number");
+		document.getElementById("mn").focus();
+		return false;
+	}
+	if((document.getElementById("mn").value).length>10)
+
+	{
+		alert("Phone number is not valid");
+		document.getElementById("mn").focus();
+		return false;
+	}
+	if(document.getElementById("adar").value=="")
+   	{
+     	alert("Enter Aadhaar Number!");
+     	document.getElementById("adar").focus();
+     	return false;
+ 	}
+	if(/[^0-9]/gi.test(document.getElementById("adar").value))
+	{
+		alert("Special characters not allowed in aadhaar Number");
+		document.getElementById("adar").focus();
+		return false;
+	}
+	if((document.getElementById("adar").value).length!=12)
+
+	{
+		alert("Aaddhaar number is not valid");
+		document.getElementById("adar").focus();
+		return false;
+	}
+	if(document.getElementById("email").value=="")
+	{
+		alert("Enter your E-mail ID");
+		document.getElementById("email").focus();
+		return false;
+	}
+	var emailPat =/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+	var emailid=document.getElementById("email").value;
+	var matchArray = emailid.match(emailPat);
+	if (matchArray == null)
+	{
+		alert("Your Email ID seems incorrect. Enter Correct Email ID.");
+		document.getElementById("email").focus();
+		return false;
+	}
+	if(document.getElementById("pwd").value=="")
+	{
+		alert("Enter Password!");
+		document.getElementById("pwd").focus();
+    	return false;
+ 	}
+}
+</script>
+
+<body>
+<form action="/add_ashaworker" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="487" height="481" border="0" align="center">
+    <tr>
+      <td width="212">Name</td>
+      <td width="259"><input type="text" name="name" id="name" /></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><textarea name="address" id="adr" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><input type="text" name="pin" id="pin" /></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><input type="text" name="phone" id="mn" /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><input type="file" name="photo" id="fileField" /></td>
+    </tr>
+    <tr>
+      <td>Aadhar No</td>
+      <td><input type="text" name="aadharno" id="adar" /></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><input type="radio" name="radio" checked="checked" id="radio" value="Male" />
+        Male 
+        <input type="radio" name="radio" id="radio2" value="Female" />
+        Female</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="email" id="email" /></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" name="pwd" id="pwd" minlength="6" required="required" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="submit" id="submit" value="Submit" onclick="return valid();" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
